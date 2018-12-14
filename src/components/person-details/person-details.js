@@ -16,9 +16,6 @@ export default class PersonDetails extends Component {
 
   componentDidMount() {
     this.updatePerson();
-    this.setState({
-      loading: false
-    });
   }
 
   componentDidUpdate(prevProps) {
@@ -36,7 +33,7 @@ export default class PersonDetails extends Component {
     this.swapiService
       .getPerson(personId)
       .then((person) => {
-        this.setState({ person });
+        this.setState({ person, loading: false });
       });
   }
 
@@ -45,10 +42,10 @@ export default class PersonDetails extends Component {
       return <span>Select a person from a list</span>
     };
 
-    const { loading } = this.state;
+    const { person, loading } = this.state;
 
     const spinner = loading ? <Spinner /> : null;
-    const personDetails = !loading ? <PersonCard person={ this.state.person }/> : null;
+    const personDetails = !loading ? <PersonCard person={ person }/> : null;
 
     return (
       <div className="person-details card">
@@ -59,7 +56,7 @@ export default class PersonDetails extends Component {
   }
 }
 
-const PersonCard = (person) => {
+const PersonCard = ({ person }) => {
 
   const { id, name, gender, birthYear, eyeColor } = person;
 

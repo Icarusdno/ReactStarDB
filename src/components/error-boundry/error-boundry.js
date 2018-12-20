@@ -5,23 +5,23 @@ import ErrorIndicator from '../error-indicator';
 import './error-boundry';
 
 export default class ErrorBoundry extends Component {
-	
-	state = {
-		hasError: false
-	}
+  
+  state = {
+    hasError: false
+  };
 
-	componentDidCatch() {
-		this.setState({
-			hasError: true
-		});
-	}
+  componentDidCatch() {
+    this.setState({
+        hasError: true
+    });
+  }
 
-	render() {
-		
-		if (this.state.hasError) {
-			return <ErrorIndicator />
-		}
-
-		return this.props.children;
+  render() {
+      
+    if (this.state.hasError) {
+      return <ErrorIndicator />
     }
+    
+    return this.props.children;
+  }
 }

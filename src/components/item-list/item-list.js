@@ -28,13 +28,13 @@ const ItemList = (props) => {
 }
 
 ItemList.defaultProps = {
-  onItemSelected: () => {}
+    onItemSelected: () => {}
 };
 
 ItemList.propTypes = {
-  onItemSelected: PropTypes.func,
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
-  children: PropTypes.func.isRequired
+    onItemSelected: PropTypes.func,
+    data: PropTypes.arrayOf(PropTypes.object).isRequired,
+    children: PropTypes.func.isRequired
 };
 
 export default ItemList;
